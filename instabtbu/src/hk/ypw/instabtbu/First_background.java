@@ -8,7 +8,6 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 
 public class First_background extends Activity {
