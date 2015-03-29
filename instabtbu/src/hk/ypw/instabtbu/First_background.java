@@ -1,6 +1,5 @@
 package hk.ypw.instabtbu;
 
-import hk.ypw.instabtbu.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -14,14 +13,16 @@ public class First_background extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		//getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); 
+		// getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+		// WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_first_background);
 		DisplayMetrics mDisplayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(mDisplayMetrics);
 		Double width = (double) mDisplayMetrics.widthPixels;
-		System.out.println("욱똑:"+width);
-		ImageView myImageView = (ImageView)findViewById(R.id.first_img);
-		if(width>=1000)myImageView.setBackgroundResource(R.drawable.first_start_1080);
+		System.out.println("욱똑:" + width);
+		ImageView myImageView = (ImageView) findViewById(R.id.first_img);
+		if (width >= 1000)
+			myImageView.setBackgroundResource(R.drawable.first_start_1080);
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -30,7 +31,7 @@ public class First_background extends Activity {
 				finish();
 			}
 		}).start();
-		
+
 		myImageView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
