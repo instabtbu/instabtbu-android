@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;hk.ypw.scan&apos; to &apos;hk.ypw.autoCall&apos;&#x0A;- Original project: &apos;scancode&apos;&#x0A;- Original element: &apos;scancode/src/hk.ypw.scan&apos;&#x0A;- Renamed element: &apos;scancode/src/hk.ypw.autoCall&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;hk.ypw.scan&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;hk.ypw.scan" name="hk.ypw.autoCall" qualified="false" references="true" stamp="1426423909350" textual="false" version="1.0"/>
+</session>

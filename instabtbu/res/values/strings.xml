@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">instabtbu</string>
+    <string name="menu_settings">Settings</string>
+    <string name="action_settings">Settings</string>
+    <string name="copyright">copyright ©2014 Team of instabtbu.All rights reserved.</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+	<string name="share">"instabtbu 校园卡 就是你的手机\r\nhttp://www.instabtbu.com</string>
+</resources>
