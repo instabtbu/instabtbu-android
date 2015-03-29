@@ -1,8 +1,0 @@
-INDEX VERSION 1.126+F:\instabtbu-android\.metadata\.plugins\org.eclipse.jdt.core
-4039475498.index
-304354909.index
-669667486.index
-4214728436.index
-1337257657.index
-2219851277.index
-1230458695.index
