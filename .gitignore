@@ -2,4 +2,8 @@
 *.index
 *.class
 *.cache
+*.ini
 .metadata
+.plugins
+.lock
+
