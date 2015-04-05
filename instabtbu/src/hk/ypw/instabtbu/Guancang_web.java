@@ -50,9 +50,12 @@ public class Guancang_web extends SwipeBackActivity {
 	private class MyWebViewClient extends WebViewClient {
 		@Override
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
-			view.loadUrl(url);
-			loadurlString = url;
-			executorService.submit(addimgRunnable);
+			if (url.indexOf("book") > 0) {
+				loadurlString = url;
+				executorService.submit(addimgRunnable);
+			}
+			if (url.indexOf("marc_no") == -1)
+				view.loadUrl(url);
 			return true;
 		}
 
@@ -71,17 +74,33 @@ public class Guancang_web extends SwipeBackActivity {
 				result = httpsGET("https://api.douban.com/v2/book/isbn/"
 						+ isbnString);
 
-				String srcString = zhongjian(result, "image\":\"", "\"");
+				String srcString = zhongjian(result, "large\":\"", "\"");
 				srcString = srcString.replace("\\", "");
-				String javascriptString = "javascript:var aEle=document.body.getElementsByTagName('strong');"
-						+ "var strong=aEle[aEle.length-1];"
-						+ "var s=document.createElement('img');"
-						+ "var br=document.createElement('br');"
-						+ "s.src='"
-						+ srcString
-						+ "';"
-						+ "strong.appendChild(br);"
-						+ "strong.appendChild(s);";
+				String javascriptString = "";
+				if ((srcString.indexOf("book-default") > 0)
+						| (srcString.length() < 5)) {
+					srcString = "http://img3.douban.com/pics/book-default-medium.gif";
+					javascriptString = "javascript:var aEle=document.body.getElementsByTagName('strong');"
+							+ "var strong=aEle[aEle.length-1];"
+							+ "var s=document.createElement('img');"
+							+ "var br=document.createElement('br');"
+							+ "s.src='"
+							+ srcString
+							+ "';"
+							+ "strong.appendChild(br);"
+							+ "strong.appendChild(s);";
+				} else {
+					javascriptString = "javascript:var aEle=document.body.getElementsByTagName('strong');"
+							+ "var strong=aEle[aEle.length-1];"
+							+ "var s=document.createElement('img');"
+							+ "var br=document.createElement('br');"
+							+ "s.src='"
+							+ srcString
+							+ "';"
+							+ "s.style.cssText=\"width: 50%;\";"
+							+ "strong.appendChild(br);"
+							+ "strong.appendChild(s);";
+				}
 				jsString = javascriptString;
 
 				Message message = new Message();
