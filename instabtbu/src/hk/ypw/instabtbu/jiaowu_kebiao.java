@@ -319,7 +319,7 @@ public class jiaowu_kebiao extends SwipeBackActivity {
 				super.handleMessage(msg);
 				TextView xueqiTextView = (TextView) findViewById(R.id.jiaowu_dangqianxueqi);
 				if (msg.what == 1) {
-					xueqiTextView.setText("当前学期：" + xueqi);
+					xueqiTextView.setText(xueqi);
 					System.out.println("加载listview");
 					ListView listview = (ListView) findViewById(R.id.jiaowu_listView_kebiao);
 					CustomAdapter customAdapter = new CustomAdapter(

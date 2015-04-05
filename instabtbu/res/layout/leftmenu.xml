@@ -51,37 +51,43 @@
             <ImageView
                 android:id="@+id/leftmenu_shangwang"
                 android:layout_width="199dp"
-                android:layout_height="43dp"
+                android:layout_height="48dp"
                 android:background="@drawable/left_shangwang0" />
 
             <ImageView
                 android:id="@+id/leftmenu_jiaowu"
                 android:layout_width="199dp"
-                android:layout_height="43dp"
+                android:layout_height="48dp"
                 android:background="@drawable/left_jiaowu0" />
+
+            <ImageView
+                android:id="@+id/leftmenu_guancang"
+                android:layout_width="199dp"
+                android:layout_height="48dp"
+                android:background="@drawable/left_guancang0" />
 
             <ImageView
                 android:id="@+id/leftmenu_shenghuo"
                 android:layout_width="199dp"
-                android:layout_height="43dp"
+                android:layout_height="48dp"
                 android:background="@drawable/left_shenghuo0" />
 
             <ImageView
                 android:id="@+id/leftmenu_xiaoyuanka"
                 android:layout_width="199dp"
-                android:layout_height="43dp"
+                android:layout_height="48dp"
                 android:background="@drawable/left_xiaoyuanka0" />
-
+            
             <ImageView
                 android:id="@+id/leftmenu_ditie"
                 android:layout_width="199dp"
-                android:layout_height="43dp"
+                android:layout_height="48dp"
                 android:background="@drawable/left_ditie0" />
             
 			<ImageView
                 android:id="@+id/leftmenu_about"
                 android:layout_width="199dp"
-                android:layout_height="43dp"
+                android:layout_height="48dp"
                 android:background="@drawable/left_about0" />
         </LinearLayout>
     </ScrollView>

@@ -96,6 +96,8 @@ public class leftmenu {
 				.findViewById(R.id.leftmenu_xiaoyuanka);
 		ImageView aboutImageView = (ImageView) thisActivity
 				.findViewById(R.id.leftmenu_about);
+		ImageView guancangImageView = (ImageView) thisActivity
+				.findViewById(R.id.leftmenu_guancang);
 
 		shangwangImageView.setOnTouchListener(new View.OnTouchListener() {
 			@Override
@@ -149,6 +151,25 @@ public class leftmenu {
 					if (type != 3)
 						thisActivity.finish();
 					else
+						menu.toggle();
+				}
+				return true;
+			}
+		});
+
+		guancangImageView.setOnTouchListener(new View.OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					leftmenu_ui(6);
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					MobclickAgent.onEvent(thisActivity, "guancang");
+					if (type != 6) {
+						Intent intent = new Intent();
+						intent.setClass(thisActivity, Guancang.class);
+						thisActivity.startActivity(intent);
+						thisActivity.finish();
+					} else
 						menu.toggle();
 				}
 				return true;
@@ -227,13 +248,16 @@ public class leftmenu {
 				(ImageView) thisActivity.findViewById(R.id.leftmenu_shenghuo),
 				(ImageView) thisActivity.findViewById(R.id.leftmenu_xiaoyuanka),
 				(ImageView) thisActivity.findViewById(R.id.leftmenu_ditie),
-				(ImageView) thisActivity.findViewById(R.id.leftmenu_about), };
+				(ImageView) thisActivity.findViewById(R.id.leftmenu_about),
+				(ImageView) thisActivity.findViewById(R.id.leftmenu_guancang), };
 		int[] tu1 = { R.drawable.left_shangwang1, R.drawable.left_jiaowu1,
 				R.drawable.left_shenghuo1, R.drawable.left_xiaoyuanka1,
-				R.drawable.left_ditie1, R.drawable.left_about1, };
+				R.drawable.left_ditie1, R.drawable.left_about1,
+				R.drawable.left_guancang1, };
 		int[] tu0 = { R.drawable.left_shangwang0, R.drawable.left_jiaowu0,
 				R.drawable.left_shenghuo0, R.drawable.left_xiaoyuanka0,
-				R.drawable.left_ditie0, R.drawable.left_about0, };
+				R.drawable.left_ditie0, R.drawable.left_about0,
+				R.drawable.left_guancang0, };
 		int i;
 		for (i = 0; i < myImageViews.length; i++) {
 			if (i == a)

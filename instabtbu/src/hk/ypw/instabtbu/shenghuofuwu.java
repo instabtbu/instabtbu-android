@@ -108,7 +108,7 @@ public class shenghuofuwu extends Activity {
 		LinearLayout linearLayout = (LinearLayout) findViewById(R.id.shenghuo_linear);
 		int i;
 		Canting[] cantings = {
-				new Canting(R.drawable.shenghuo_shousi, "寿司太郎", "13264016186"),
+
 				new Canting(R.drawable.shenghuo_hanwei, "韩味小厨", "13167516420"),
 				new Canting(R.drawable.shenghuo_tiebanke, "铁板客", "13381318000"),
 				new Canting(R.drawable.shenghuo_pasta, "Pasta&Curry",
@@ -120,10 +120,10 @@ public class shenghuofuwu extends Activity {
 				new Canting(R.drawable.shenghuo_tuerqi, "土耳其烤肉", "15810831105"),
 				new Canting(R.drawable.shenghuo_tuode, "托德鸡排", "13120465388"),
 				new Canting(R.drawable.shenghuo_zibu, "滋补烩面", "18610621662"),
-				new Canting(R.drawable.shenghuo_matatang, "骨汤麻辣烫",
+				new Canting(R.drawable.shenghuo_malatang, "骨汤麻辣烫",
 						"13167508739"),
-				new Canting(R.drawable.shenghuo_bohua, "博华快餐", "15701674266"),
-				new Canting(R.drawable.shenghuo_guoqiao, "过桥米线", "13681304280") };
+				new Canting(R.drawable.shenghuo_guoqiao, "过桥米线", "13681304280"),
+				new Canting(R.drawable.shenghuo_shousi, "寿司太郎", "13264016186"), };
 
 		for (i = 0; i < cantings.length; i++) {
 			final String tempcall = cantings[i].dianhua;
