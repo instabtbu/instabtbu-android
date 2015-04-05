@@ -7,3 +7,9 @@
 .plugins
 .lock
 *.DS_Store
+
+*.dex
+
+*.jar
+instabtbu/bin
+
