@@ -6,4 +6,4 @@
 .metadata
 .plugins
 .lock
-
+*.DS_Store
