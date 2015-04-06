@@ -48,6 +48,7 @@
         <ignore path="res/layout/activity_first_jieshao.xml" />
         <ignore path="res/layout/activity_guancang.xml" />
         <ignore path="res/layout/activity_jiaowu.xml" />
+        <ignore path="res/layout/activity_shangwang.xml" />
         <ignore path="res/layout/umeng_fb_list_header.xml" />
     </issue>
 </lint>

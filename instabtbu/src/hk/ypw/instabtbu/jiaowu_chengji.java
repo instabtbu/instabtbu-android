@@ -145,10 +145,10 @@ public class jiaowu_chengji extends SwipeBackActivity {
 			}
 			try {
 				int ye = 0;
-				p = Pattern.compile("value=(\\w+).+?ĩҳ");
+				p = Pattern.compile("value=(.+?)value=(\\w+).+?ĩҳ");
 				m = p.matcher(result);
 				m.find();
-				String yeString = m.group(1);
+				String yeString = m.group(2);
 				ye = Integer.valueOf(yeString);
 				int xh = 2;
 				while (xh <= ye) {

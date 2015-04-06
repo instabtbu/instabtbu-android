@@ -39,6 +39,10 @@ public class Guancang_web extends SwipeBackActivity {
 		webview.getSettings().setJavaScriptEnabled(true);
 		webview.setWebViewClient(new MyWebViewClient());
 		webview.loadUrl(urlString);
+		if (urlString.indexOf("isbnstr") > 0) {
+			loadurlString = urlString;
+			executorService.submit(addimgRunnable);
+		}
 	}
 
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -130,7 +134,7 @@ public class Guancang_web extends SwipeBackActivity {
 				String bumenString = "";
 				String beizhuString = "";
 				for (int i = 0; i < bumen.size(); i++) {
-					if (beizhuString.indexOf(beizhu.get(i)) == -1) {
+					if (bumenString.indexOf(bumen.get(i)) == -1) {
 						bumenString += bumen.get(i) + " ";
 						beizhuString += beizhu.get(i) + " ";
 					}
@@ -156,7 +160,7 @@ public class Guancang_web extends SwipeBackActivity {
 
 	String addPlace = "";
 
-	final Handler handler = new Handler() {
+	Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
@@ -176,11 +180,12 @@ public class Guancang_web extends SwipeBackActivity {
 		}
 	};
 
-	public String zhongjian(String text, String textl, String textr) {
+	public static String zhongjian(String text, String textl, String textr) {
 		return zhongjian(text, textl, textr, 0);
 	}
 
-	public String zhongjian(String text, String textl, String textr, int start) {
+	public static String zhongjian(String text, String textl, String textr,
+			int start) {
 		try {
 			int left = text.indexOf(textl, start);
 			int right = text.indexOf(textr, left + textl.length());
@@ -219,7 +224,7 @@ public class Guancang_web extends SwipeBackActivity {
 		return (result);
 	}
 
-	public String httpsGET(String url) {
+	public static String httpsGET(String url) {
 		String result = "";
 		System.out.println(url);
 		HttpGet hGet = new HttpGet(url);

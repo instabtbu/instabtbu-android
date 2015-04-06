@@ -8,10 +8,7 @@
     <string name="umeng_fb_contact_info">联系方式</string>
     <string name="umeng_fb_send">发送</string>
     <string name="umeng_fb_reply_content_default">
-        网络问题请拨打68985943咨询.(比如信号不好,掉线,连不上,已达到登录上限等问题)
-        连接不上wifi请查看APP启动时的三张图片.
-        电脑问题与本程序无关.
-        本功能仅允许报告BUG或者提建议.</string>
+        网络问题,信号不好,掉线,wifi连接失败,已达到登录限制等问题请拨打68985943咨询.其他问题请留言.</string>
     <string name="umeng_fb_notification_ticker_text">有新的回复</string>
     <string name="umeng_fb_notification_content_formatter_single_msg">新回复: %s</string>
     <string name="umeng_fb_notification_content_formatter_multiple_msg">收到来自开发者的 %d 条回复。</string>

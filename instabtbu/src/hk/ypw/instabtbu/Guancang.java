@@ -2,6 +2,7 @@ package hk.ypw.instabtbu;
 
 import java.net.URLEncoder;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.umeng.analytics.MobclickAgent;
 
+@SuppressLint("HandlerLeak")
 public class Guancang extends Activity {
 	leftmenu leftmenu;
 	SlidingMenu menu;
@@ -69,6 +71,35 @@ public class Guancang extends Activity {
 				e.printStackTrace();
 			}
 		}
-
 	}
+
+	public void scan(View v) {
+		Intent intent = new Intent();
+		intent.setClass(Guancang.this, Guancang_scan.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivityForResult(intent, 1);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		switch (requestCode) {
+		case 1:
+			if (resultCode == RESULT_OK) {
+				Bundle bundle = data.getExtras();
+				String isbnString = bundle.getString("result");
+				Toast.makeText(thisActivity, "ISBN:" + isbnString,
+						Toast.LENGTH_SHORT).show();
+				String searchUrl = "http://211.82.113.138:8080/search?xc=4&isbnstr="
+						+ isbnString;
+				Guancang_web.urlString = searchUrl;
+				Intent intent = new Intent();
+				intent.setClass(thisActivity, Guancang_web.class);
+				thisActivity.startActivity(intent);
+			}
+		}
+	}
+
+	String name = "";
+
 }
