@@ -1,7 +1,10 @@
 package hk.ypw.instabtbu;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
@@ -63,6 +66,9 @@ public class Guancang_web extends SwipeBackActivity {
 
 	String loadurlString = "";
 	String jsString = "";
+	ArrayList<String> beizhu = new ArrayList<String>();
+	ArrayList<String> bumen = new ArrayList<String>();
+
 	Runnable addimgRunnable = new Runnable() {
 		@Override
 		public void run() {
@@ -102,15 +108,53 @@ public class Guancang_web extends SwipeBackActivity {
 							+ "strong.appendChild(s);";
 				}
 				jsString = javascriptString;
-
-				Message message = new Message();
-				message.what = 1;
-				handler.sendMessage(message);
+				// 从豆瓣的API获取图片信息
 			} catch (Exception e) {
-
 			}
+
+			try {
+				String bookid = zhongjian(loadurlString, "book%2f", "&");
+				String detailUrl = "http://libopac.btbu.edu.cn:8080/opac/book/getHoldingsInformation/"
+						+ bookid;
+				result = "";
+				result = GET(detailUrl);
+				result = result.replace("\"", "");
+				Pattern pattern = Pattern.compile("备注:(.+?),部门名称:(.+?),");
+				Matcher matcher = pattern.matcher(result);
+				beizhu.clear();
+				bumen.clear();
+				while (matcher.find()) {
+					beizhu.add(matcher.group(1));
+					bumen.add(matcher.group(2));
+				}
+				String bumenString = "";
+				String beizhuString = "";
+				for (int i = 0; i < bumen.size(); i++) {
+					if (beizhuString.indexOf(beizhu.get(i)) == -1) {
+						bumenString += bumen.get(i) + " ";
+						beizhuString += beizhu.get(i) + " ";
+					}
+				}
+				String addPlaceString = "javascript:var bumen=\""
+						+ bumenString
+						+ "\".split(\" \");"
+						+ "beizhu=\""
+						+ beizhuString
+						+ "\".split(\" \");"
+						+ "for(aEle=document.body.getElementsByTagName(\"td\"),i=aEle.length-1;0<=i;i--)"
+						+ "for(var j=bumen.length-1;0<=j;j--)"
+						+ "if(-1!=aEle[i].innerHTML.indexOf(bumen[j]))"
+						+ "{var s=document.createElement(\"strong\");s.innerHTML=\"  \"+beizhu[j];aEle[i].appendChild(s);};";
+				addPlace = addPlaceString;
+			} catch (Exception e) {
+			}
+			Message message = new Message();
+			message.what = 1;
+			handler.sendMessage(message);
 		}
 	};
+
+	String addPlace = "";
 
 	final Handler handler = new Handler() {
 		@Override
@@ -119,7 +163,12 @@ public class Guancang_web extends SwipeBackActivity {
 			try {
 				if (msg.what == 1) {
 					WebView webview = (WebView) findViewById(R.id.guancang_webview);
-					webview.loadUrl(jsString);
+					if (jsString.length() != 0)
+						webview.loadUrl(jsString);
+					if (addPlace.length() != 0)
+						webview.loadUrl(addPlace);
+					jsString = "";
+					addPlace = "";
 				}
 			} catch (Exception e) {
 
