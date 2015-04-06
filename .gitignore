@@ -7,13 +7,5 @@
 .plugins
 .lock
 *.DS_Store
-<<<<<<< HEAD
-*.dex
-=======
-
-*.dex
-
+*.dex 
 *.jar
-instabtbu/bin
-
->>>>>>> origin/master
