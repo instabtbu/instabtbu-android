@@ -7,6 +7,5 @@
 .plugins
 .lock
 *.DS_Store
-*.dex 
-*.jar
+*.dex
 /*/bin
