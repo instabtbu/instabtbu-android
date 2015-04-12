@@ -21,6 +21,7 @@ import hk.ypw.instabtbu.R;
 import java.util.Collection;
 import java.util.HashSet;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -42,6 +43,7 @@ import com.mining.app.zxing.camera.CameraManager;
  * animation and result points.
  * 
  */
+@SuppressLint("DrawAllocation")
 public final class ViewfinderView extends View {
 	/**
 	 * 刷新界面的时间
@@ -58,15 +60,6 @@ public final class ViewfinderView extends View {
 	 * 四个绿色边角对应的宽度
 	 */
 	private static final int CORNER_WIDTH = 5;
-	/**
-	 * 扫描框中的中间线的宽度
-	 */
-	private static final int MIDDLE_LINE_WIDTH = 6;
-
-	/**
-	 * 扫描框中的中间线的与扫描框左右的间隙
-	 */
-	private static final int MIDDLE_LINE_PADDING = 5;
 
 	/**
 	 * 中间那条线每次刷新移动的距离
@@ -95,11 +88,6 @@ public final class ViewfinderView extends View {
 	 * 中间滑动线的最顶端位置
 	 */
 	private int slideTop;
-
-	/**
-	 * 中间滑动线的最底端位置
-	 */
-	private int slideBottom;
 
 	/**
 	 * 将扫描的二维码拍下来，这里没有这个功能，暂时不考虑
@@ -142,7 +130,6 @@ public final class ViewfinderView extends View {
 		if (!isFirst) {
 			isFirst = true;
 			slideTop = frame.top;
-			slideBottom = frame.bottom;
 		}
 
 		// 获取屏幕的宽和高
